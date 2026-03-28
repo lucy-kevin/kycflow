@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma"
+import Link from "next/link"
 
 export default async function DashboardPage() {
   const verifications = await prisma.verification.findMany({
@@ -36,6 +37,9 @@ export default async function DashboardPage() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Submitted
                 </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -68,6 +72,14 @@ export default async function DashboardPage() {
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500">
                     {new Date(v.submittedAt).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 text-sm">
+                    <Link
+                      href={`/dashboard/${v.id}`}
+                      className="text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      View →
+                    </Link>
                   </td>
                 </tr>
               ))}
