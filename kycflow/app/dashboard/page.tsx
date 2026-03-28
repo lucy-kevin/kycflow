@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import DashboardSearch from "@/components/DashboardSearch"
 
+
 export default async function DashboardPage({
   searchParams,
 }: {
