@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import DashboardSearch from "@/components/DashboardSearch"
-
+import type { Verification } from "@prisma/client"
 export default async function DashboardPage({
   searchParams,
 }: {
@@ -65,7 +65,7 @@ export default async function DashboardPage({
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {verifications.map((v) => (
+              {verifications.map((v: Verification) => (
                 <tr key={v.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 text-sm text-gray-900">
                     {v.customerName}
