@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import DashboardSearch from "@/components/DashboardSearch"
-import type { Verification } from "@prisma/client"
+
 export default async function DashboardPage({
   searchParams,
 }: {
