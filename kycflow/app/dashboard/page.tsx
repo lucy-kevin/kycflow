@@ -1,8 +1,28 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
+import DashboardSearch from "@/components/DashboardSearch"
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ search?: string; status?: string }>
+}) {
+  const { search, status } = await searchParams
+
   const verifications = await prisma.verification.findMany({
+    where: {
+      AND: [
+        search
+          ? {
+              customerName: {
+                contains: search,
+                mode: "insensitive",
+              },
+            }
+          : {},
+        status ? { status } : {},
+      ],
+    },
     orderBy: { submittedAt: "desc" },
   })
 
@@ -12,10 +32,12 @@ export default async function DashboardPage() {
         All Applications
       </h2>
 
+      <DashboardSearch />
+
       {verifications.length === 0 ? (
-        <p className="text-gray-500">No applications yet.</p>
+        <p className="text-gray-500 mt-6">No applications found.</p>
       ) : (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="bg-white rounded-lg shadow overflow-hidden mt-4">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
