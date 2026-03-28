@@ -3,6 +3,15 @@ import Link from "next/link"
 import DashboardSearch from "@/components/DashboardSearch"
 
 
+type Verification = {
+  id: string
+  customerName: string
+  email: string
+  idType: string
+  status: string
+  confidenceScore: number
+  submittedAt: Date
+}
 export default async function DashboardPage({
   searchParams,
 }: {
@@ -66,7 +75,7 @@ export default async function DashboardPage({
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-            {verifications.map((v: typeof verifications[number]) => (
+              {verifications.map((v: Verification) => (
                 <tr key={v.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 text-sm text-gray-900">
                     {v.customerName}
