@@ -4,7 +4,7 @@ A self-service customer identity verification platform built with Next.js 14, Pr
 
 ## Live Demo
 
-🔗 [kycflow.vercel.app](https://kycflow-btgaaw3ea-clarri-track.vercel.app/)
+🔗 [kycflow.vercel.app](https://kycflow.vercel.app/)
 
 **Demo credentials:**
 - Email: `demo@kycflow.com`
