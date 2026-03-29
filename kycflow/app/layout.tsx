@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KYC Flow — Identity Verification
+  title: "KYC Flow — Identity Verification"
   description: "Identity Verification",
 };
 
